@@ -4,7 +4,7 @@ const useInput = (validateValue) => {
     const [enteredValue, setEnteredValue] = useState('');
     const [isTouched, setIsTouched] = useState(false);
 
-    //annonamus value function is executed here
+    //annonymus value function is executed here
     const valueIsValid = validateValue(enteredValue);
     const hasError = !valueIsValid && isTouched;
 

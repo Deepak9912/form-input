@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import useInput from '../hooks/use-input';
 
 const SimpleInput = () => {
@@ -52,6 +50,7 @@ const SimpleInput = () => {
                 <input onChange={nameChangeHandler} onBlur={nameBlurHandler} type="text" id="name" placeholder="type here" />
                 {nameInputHasError && <p>Name value must not be empty!</p>}
             </div>
+
             <div>
                 <label htmlfor="email">Type your email</label>
                 <input onChange={emailChangeHandler} onBlur={emailBlurHandler} value={enteredEmail} type="email" id="email" placeholder="type here" />

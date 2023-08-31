@@ -45,7 +45,6 @@ const Forms = () => {
         console.log(enteredName);
         console.log(enteredEmail);
         //input validation
-        setEnteredName('');
         setEnteredNameTouched(false);
         //email validation
         setEnteredEmail('');
