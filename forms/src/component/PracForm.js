@@ -3,39 +3,35 @@ import {useState} from 'react';
 const PracForm = () => {
 
     const [enteredName, setEnteredName] = useState('');
-    const [enteredSurname, setEnteredSurname] = useState('');
-    const [enteredEmail, setEnteredEmail] = useState('');
+    const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
+    const enteredNameIsValid = enteredName.trim() !== "";
+    const enteredNameNotValid = !enteredNameIsValid && enteredNameTouched;
+    
     const nameChangeHandler = (event) => {
         setEnteredName(event.target.value);
     };
 
-    const surnameChangeHandler = (event) => {
-        setEnteredSurname(event.target.value);
-    };
-
-    const emailChangeHandler = (event) => {
-        setEnteredEmail(event.target.value);
-    };
+    const nameInputBlurHandler = () => {
+        setEnteredNameTouched(true);
+    }
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(enteredName, enteredSurname, enteredEmail)
+        setEnteredNameTouched(true);
+        //form validation
+        if(!enteredNameIsValid){
+            return;
+        }
+        setEnteredName('')
+        setEnteredNameTouched(false);
     }
-
 
     return <form onSubmit={formSubmitHandler}>
         <div>
             <label htmlfor="name">First Name</label>
-            <input onChange={nameChangeHandler} value={enteredName} for="name" type='text' />
-        </div>
-        <div>
-            <label htmlfor="surname">Last Name</label>
-            <input onChange={surnameChangeHandler} value={enteredSurname} type='text' for="surname" />
-        </div>
-        <div>
-            <label htmlfor="email">Email Address</label>
-            <input onChange={emailChangeHandler} value={enteredEmail} type='email' for="email" />
+            <input onChange={nameChangeHandler} onBlur={nameInputBlurHandler} value={enteredName} id="name" type='text' />
+            {enteredNameNotValid && <p>Empty form cannot be submitted!!</p>}
         </div>
         <div>
             <button>Submit</button>
