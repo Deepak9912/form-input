@@ -1,10 +1,11 @@
 import './App.css';
-import Forms from './component/Form';
+import PracForm from './component/PracForm';
+
 
 function App() {
   return (
     <div>
-      <Forms />
+        <PracForm />
     </div>
   );
 }
