@@ -8,7 +8,6 @@ const PracForm = () => {
 
     const nameChangeHandler = (event) => {
         setEnteredName(event.target.value);
-        console.log(event.target.value)
     };
 
     const surnameChangeHandler = (event) => {
@@ -21,22 +20,22 @@ const PracForm = () => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault();
-        setEnteredName('')
+        console.log(enteredName, enteredSurname, enteredEmail)
     }
 
 
-    return <form onChange={formSubmitHandler}>
+    return <form onSubmit={formSubmitHandler}>
         <div>
             <label htmlfor="name">First Name</label>
-            <input onClick={nameChangeHandler} for="name" type='text' />
+            <input onChange={nameChangeHandler} value={enteredName} for="name" type='text' />
         </div>
         <div>
             <label htmlfor="surname">Last Name</label>
-            <input onClick={surnameChangeHandler} type='text' for="surname" />
+            <input onChange={surnameChangeHandler} value={enteredSurname} type='text' for="surname" />
         </div>
         <div>
             <label htmlfor="email">Email Address</label>
-            <input onClick={emailChangeHandler} type='email' for="email" />
+            <input onChange={emailChangeHandler} value={enteredEmail} type='email' for="email" />
         </div>
         <div>
             <button>Submit</button>
